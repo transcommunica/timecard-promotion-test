@@ -1,0 +1,458 @@
+---
+import Base from "../layouts/Base.astro";
+
+const pageTitle = "法人向けプラン";
+const pageDescription =
+	"法人利用に最適化した勤怠管理プラン。利用人数に合わせた料金設計と導入支援で、スムーズな運用開始をサポートします。";
+
+const plans = [
+	{
+		name: "プラン30",
+		dailyUsers: "30",
+		registeredUsers: "70",
+		setupFee: "¥100,000",
+		yearlyFee: "¥90,000",
+		monthlyFee: "¥7,500",
+		faceAuth: "◯",
+		support: "◯",
+		customCalc: "-",
+		invoice: "-",
+		facePhoto: "-",
+		hrConnect: "-",
+	},
+	{
+		name: "プラン50",
+		dailyUsers: "50",
+		registeredUsers: "120",
+		setupFee: "¥200,000",
+		yearlyFee: "¥120,000",
+		monthlyFee: "¥10,000",
+		faceAuth: "◯",
+		support: "◯",
+		customCalc: "◯",
+		invoice: "◯",
+		facePhoto: "-",
+		hrConnect: "-",
+	},
+	{
+		name: "プラン100",
+		dailyUsers: "100",
+		registeredUsers: "250",
+		setupFee: "¥500,000",
+		yearlyFee: "¥216,000",
+		monthlyFee: "¥18,000",
+		faceAuth: "◯",
+		support: "◯",
+		customCalc: "◯",
+		invoice: "◯",
+		facePhoto: "◯",
+		hrConnect: "-",
+	},
+	{
+		name: "プラン200",
+		dailyUsers: "200",
+		registeredUsers: "500",
+		setupFee: "¥750,000",
+		yearlyFee: "¥420,000",
+		monthlyFee: "¥35,000",
+		faceAuth: "◯",
+		support: "◯",
+		customCalc: "◯",
+		invoice: "◯",
+		facePhoto: "◯",
+		hrConnect: "-",
+	},
+	{
+		name: "プラン300",
+		dailyUsers: "300",
+		registeredUsers: "-",
+		setupFee: "¥1,000,000",
+		yearlyFee: "¥600,000",
+		monthlyFee: "¥50,000",
+		faceAuth: "◯",
+		support: "◯",
+		customCalc: "◯",
+		invoice: "◯",
+		facePhoto: "◯",
+		hrConnect: "◯",
+	},
+	{
+		name: "エンタープライズ",
+		dailyUsers: "500",
+		registeredUsers: "-",
+		setupFee: "¥1,800,000",
+		yearlyFee: "¥900,000",
+		monthlyFee: "¥75,000",
+		faceAuth: "◯",
+		support: "◯",
+		customCalc: "◯",
+		invoice: "◯",
+		facePhoto: "◯",
+		hrConnect: "◯",
+	},
+];
+
+const glossary = [
+	{
+		title: "1日人数",
+		description:
+			"1日に実際に出勤するスタッフ人数の目安です。登録人数ではなく運用実態に合わせてプランを選定できます。",
+	},
+	{
+		title: "登録人数",
+		description:
+			"システムに登録できる総スタッフ数の目安です。繁閑差が大きい組織では、1日人数とあわせて最適な設計をご提案します。",
+	},
+	{
+		title: "初期設定",
+		description:
+			"アカウント作成、スタッフ登録、運用ルール整理までの立ち上げ工程を支援する導入サポート費用です。",
+	},
+	{
+		title: "年間料金 / 月額料金",
+		description:
+			"年間料金は12ヶ月分の利用料金、月額料金は年間料金を12で割った目安です。支払い方法は相談可能です。",
+	},
+	{
+		title: "カスタム計算",
+		description:
+			"部署・職種・曜日などの条件に応じて、時間外計算や集計ロジックを個別要件にあわせて拡張できます。",
+	},
+	{
+		title: "労務システム連携",
+		description:
+			"CSV連携やAPI連携により、既存の労務・給与システムへ勤怠データをスムーズに受け渡せます。",
+	},
+];
+---
+
+<Base title={pageTitle} description={pageDescription} canonical="/corporation">
+	<div class="corporation-page">
+		<section class="hero">
+			<p class="eyebrow">FOR BUSINESS</p>
+			<h1>法人利用に合わせた柔軟な勤怠プラン</h1>
+			<p>
+				拠点数、スタッフ構成、就業ルールに応じて、導入前の設計から運用定着まで一貫してサポートします。
+				まずは現在の運用状況をヒアリングし、最適なプランをご提案します。
+			</p>
+			<div class="hero-actions">
+				<a class="btn btn-primary" href="mailto:sales@example.com">導入相談をする</a>
+				<a class="btn btn-secondary" href="/posts">活用事例を見る</a>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="pricing-heading">
+			<div class="section-header">
+				<h2 id="pricing-heading">料金・プラン比較</h2>
+				<p>
+					運用人数に応じた標準プランです。実際の要件に応じて、サポート範囲や機能は調整できます。
+				</p>
+			</div>
+			<div class="table-scroll">
+				<table>
+					<thead>
+						<tr>
+							<th scope="col">項目</th>
+							{plans.map((plan) => <th scope="col">{plan.name}</th>)}
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1日人数</th>
+							{plans.map((plan) => <td>{plan.dailyUsers}</td>)}
+						</tr>
+						<tr>
+							<th scope="row">登録人数</th>
+							{plans.map((plan) => <td>{plan.registeredUsers}</td>)}
+						</tr>
+						<tr>
+							<th scope="row">初期設定</th>
+							{plans.map((plan) => <td>{plan.setupFee}</td>)}
+						</tr>
+						<tr>
+							<th scope="row">年間料金</th>
+							{plans.map((plan) => <td>{plan.yearlyFee}</td>)}
+						</tr>
+						<tr>
+							<th scope="row">月額料金</th>
+							{plans.map((plan) => <td>{plan.monthlyFee}</td>)}
+						</tr>
+						<tr>
+							<th scope="row">顔認証</th>
+							{plans.map((plan) => <td>{plan.faceAuth}</td>)}
+						</tr>
+						<tr>
+							<th scope="row">担当者サポート</th>
+							{plans.map((plan) => <td>{plan.support}</td>)}
+						</tr>
+						<tr>
+							<th scope="row">カスタム計算</th>
+							{plans.map((plan) => <td>{plan.customCalc}</td>)}
+						</tr>
+						<tr>
+							<th scope="row">請求書払い</th>
+							{plans.map((plan) => <td>{plan.invoice}</td>)}
+						</tr>
+						<tr>
+							<th scope="row">顔写真保存</th>
+							{plans.map((plan) => <td>{plan.facePhoto}</td>)}
+						</tr>
+						<tr>
+							<th scope="row">労務システム連携</th>
+							{plans.map((plan) => <td>{plan.hrConnect}</td>)}
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="glossary-heading">
+			<div class="section-header">
+				<h2 id="glossary-heading">用語の説明</h2>
+				<p>比較表の読み方を、導入検討でよくいただく質問に沿って整理しました。</p>
+			</div>
+			<div class="glossary-grid">
+				{glossary.map((item) => (
+					<article class="glossary-card">
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section class="cta" aria-labelledby="cta-heading">
+			<h2 id="cta-heading">導入前の相談から運用設計まで対応します</h2>
+			<p>
+				就業規則や締め処理の運用にあわせた導入手順をご提案します。まずは現状の課題を共有してください。
+			</p>
+			<div class="hero-actions">
+				<a class="btn btn-primary" href="mailto:sales@example.com">メールで問い合わせる</a>
+				<a class="btn btn-secondary" href="/">トップに戻る</a>
+			</div>
+		</section>
+	</div>
+</Base>
+
+<style>
+	.corporation-page {
+		max-width: var(--wide-width);
+		margin: 0 auto;
+		padding: var(--spacing-16) var(--spacing-6) var(--spacing-24);
+		display: grid;
+		gap: var(--spacing-16);
+	}
+
+	.hero {
+		background:
+			radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--color-accent) 10%, transparent) 0%, transparent 45%),
+			var(--color-bg-subtle);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-16);
+	}
+
+	.eyebrow {
+		margin: 0 0 var(--spacing-4);
+		font-size: var(--font-size-xs);
+		letter-spacing: var(--tracking-wider);
+		color: var(--color-muted);
+		font-weight: 700;
+	}
+
+	.hero h1 {
+		margin: 0;
+		font-size: clamp(var(--font-size-3xl), 4.4vw, var(--font-size-5xl));
+		line-height: var(--leading-tight);
+		letter-spacing: var(--tracking-tight);
+	}
+
+	.hero > p {
+		margin: var(--spacing-6) 0 0;
+		max-width: 62ch;
+		font-size: var(--font-size-lg);
+		line-height: var(--leading-relaxed);
+		color: var(--color-text-secondary);
+	}
+
+	.hero-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-4);
+		margin-top: var(--spacing-8);
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: var(--spacing-3) var(--spacing-6);
+		border-radius: var(--radius);
+		font-weight: 600;
+		text-decoration: none;
+		transition: var(--transition-base);
+	}
+
+	.btn-primary {
+		background: var(--color-accent);
+		border: 1px solid var(--color-accent);
+		color: var(--color-on-accent);
+	}
+
+	.btn-primary:hover {
+		background: var(--color-accent-hover);
+	}
+
+	.btn-secondary {
+		background: var(--color-bg);
+		border: 1px solid var(--color-border);
+		color: var(--color-text);
+	}
+
+	.btn-secondary:hover {
+		background: var(--color-surface);
+		border-color: var(--color-text-secondary);
+	}
+
+	.section {
+		display: grid;
+		gap: var(--spacing-6);
+	}
+
+	.section-header h2 {
+		margin: 0;
+		font-size: var(--font-size-3xl);
+		line-height: var(--leading-snug);
+	}
+
+	.section-header p {
+		margin: var(--spacing-3) 0 0;
+		color: var(--color-text-secondary);
+		max-width: 70ch;
+	}
+
+	.table-scroll {
+		overflow-x: auto;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-bg);
+	}
+
+	table {
+		width: 100%;
+		min-width: 860px;
+		border-collapse: collapse;
+	}
+
+	th,
+	td {
+		padding: var(--spacing-4);
+		text-align: center;
+		border-bottom: 1px solid var(--color-border-subtle);
+		font-size: var(--font-size-sm);
+	}
+
+	thead th {
+		background: color-mix(in srgb, var(--color-accent) 8%, var(--color-bg));
+		font-size: var(--font-size-xs);
+		letter-spacing: var(--tracking-wide);
+		text-transform: uppercase;
+		color: var(--color-text-secondary);
+	}
+
+	tbody th {
+		text-align: left;
+		font-weight: 600;
+		background: var(--color-bg-subtle);
+		position: sticky;
+		left: 0;
+	}
+
+	.glossary-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: var(--spacing-5);
+	}
+
+	.glossary-card {
+		padding: var(--spacing-6);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-bg);
+	}
+
+	.glossary-card h3 {
+		margin: 0;
+		font-size: var(--font-size-xl);
+		line-height: var(--leading-snug);
+	}
+
+	.glossary-card p {
+		margin: var(--spacing-3) 0 0;
+		color: var(--color-text-secondary);
+		line-height: var(--leading-relaxed);
+	}
+
+	.cta {
+		padding: var(--spacing-12);
+		border-radius: var(--radius-lg);
+		background: linear-gradient(
+			145deg,
+			color-mix(in srgb, var(--color-accent) 12%, var(--color-bg-subtle)) 0%,
+			var(--color-bg-subtle) 100%
+		);
+		border: 1px solid var(--color-border);
+	}
+
+	.cta h2 {
+		margin: 0;
+		font-size: var(--font-size-3xl);
+		line-height: var(--leading-snug);
+	}
+
+	.cta p {
+		margin: var(--spacing-4) 0 0;
+		max-width: 58ch;
+		color: var(--color-text-secondary);
+	}
+
+	@media (max-width: 900px) {
+		.corporation-page {
+			padding-top: var(--spacing-12);
+		}
+
+		.hero {
+			padding: var(--spacing-10);
+		}
+
+		.glossary-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.corporation-page {
+			padding-left: var(--spacing-4);
+			padding-right: var(--spacing-4);
+		}
+
+		.hero h1,
+		.section-header h2,
+		.cta h2 {
+			font-size: var(--font-size-2xl);
+		}
+
+		.hero > p {
+			font-size: var(--font-size-base);
+		}
+
+		.hero,
+		.cta {
+			padding: var(--spacing-8);
+		}
+
+		table {
+			min-width: 720px;
+		}
+	}
+</style>
